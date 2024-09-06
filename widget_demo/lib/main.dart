@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -69,95 +69,97 @@ class LoginScreen extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         color: Colors.white12,
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton.filled(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                  icon: const Icon(Icons.home)),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: SizedBox(
-                    height: 200,
-                    // width: 250,
-                    child: Image.asset("assets/bg.png")),
-              ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton.filled(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
+                    icon: const Icon(Icons.home)),
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: SizedBox(
+                      height: 200,
+                      // width: 250,
+                      child: Image.asset("assets/bg.png")),
+                ),
 
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  // const Text("Username"),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: TextField(
-                      onChanged: (value) {
-                        debugPrint(value);
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter Username"),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Column(
-                children: [
-                  // const Text("Password"),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: TextField(
-                      obscureText: true,
-                      onChanged: (value) {
-                        debugPrint(value);
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter Password"),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              // const Icon(Icons.summarize),
-              // TextButton(
-              //     onPressed: () {
-              //       print("Clicked");
-              //     },
-              //     child: const Text("Submit")),
-              OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/welcome');
-                  },
-                  child: Text("Submit")),
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Column(
                   children: [
-                    Text("Don't have an account?"),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/register');
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    // const Text("Username"),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                        onChanged: (value) {
+                          debugPrint(value);
                         },
-                        child: Text("Register"))
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Username"),
+                      ),
+                    ),
                   ],
                 ),
-              )
-              // IconButton(
-              //     onPressed: () {
-              //       print("Clicked");
-              //     },
-              //     icon: const Icon(Icons.thumb_up)),
-            ],
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  children: [
+                    // const Text("Password"),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                        obscureText: true,
+                        onChanged: (value) {
+                          debugPrint(value);
+                        },
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Password"),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                // const Icon(Icons.summarize),
+                // TextButton(
+                //     onPressed: () {
+                //       print("Clicked");
+                //     },
+                //     child: const Text("Submit")),
+                OutlinedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/welcome');
+                    },
+                    child: Text("Submit")),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Don't have an account?"),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                          },
+                          child: Text("Register"))
+                    ],
+                  ),
+                )
+                // IconButton(
+                //     onPressed: () {
+                //       print("Clicked");
+                //     },
+                //     icon: const Icon(Icons.thumb_up)),
+              ],
+            ),
           ),
         ),
       ),
@@ -181,76 +183,78 @@ class RegisterScreen extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           color: Colors.white12,
           child: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  children: [
-                    IconButton.filled(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/');
-                        },
-                        icon: const Icon(Icons.home)),
-                    Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: SizedBox(
-                          height: 200,
-                          // width: 250,
-                          child: Image.asset("assets/bg.png")),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 15),
-                      child: TextField(
-                        decoration: InputDecoration(
+              child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      IconButton.filled(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/');
+                          },
+                          icon: const Icon(Icons.home)),
+                      Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: SizedBox(
+                            height: 200,
+                            // width: 250,
+                            child: Image.asset("assets/bg.png")),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 15),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter Username"),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 15),
+                        child: TextField(
+                          decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: "Enter Username"),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 15),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter Email",
+                            hintText: "Enter Email",
+                          ),
                         ),
                       ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter Password",
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 20),
+                        child: TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Password",
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: OutlinedButton(
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: OutlinedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/login');
+                          },
+                          child: const Text("Register"),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Already have an account?"),
+                    TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, '/login');
                         },
-                        child: const Text("Register"),
-                      ),
-                    )
+                        child: const Text("Login"))
                   ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Already have an account?"),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: const Text("Login"))
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ))),
     );
   }
