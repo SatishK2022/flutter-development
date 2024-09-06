@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,28 +9,61 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyWidgetDemo(),
+    return MaterialApp(
+      // home: LoginScreen(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => HomeScreen(),
+        "/login": (context) => LoginScreen(),
+        "/register": (context) => RegisterScreen(),
+        "/welcome": (context) => WelcomeScreen(),
+      },
     );
   }
 }
 
-class MyWidgetDemo extends StatefulWidget {
-  const MyWidgetDemo({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-  @override
-  State<MyWidgetDemo> createState() => _MyWidgetDemoState();
-}
-
-class _MyWidgetDemoState extends State<MyWidgetDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("LOGIN"),
-        backgroundColor: const Color.fromRGBO(255, 114, 94, 1),
-        centerTitle: true,
-      ),
+        body: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: const Color.fromARGB(31, 255, 0, 0),
+            child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: SizedBox(
+                        height: 250, child: Image.asset("assets/bg.png")),
+                  ),
+                  OutlinedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/register");
+                      },
+                      child: const Text(
+                        "Getting Started",
+                        style: TextStyle(color: Colors.black),
+                      )),
+                ]))));
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text("LOGIN"),
+      //   backgroundColor: const Color.fromRGBO(255, 114, 94, 1),
+      //   centerTitle: true,
+      // ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -39,11 +72,16 @@ class _MyWidgetDemoState extends State<MyWidgetDemo> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              IconButton.filled(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                  },
+                  icon: const Icon(Icons.home)),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: SizedBox(
-                    height: 250,
-                    width: 250,
+                    height: 200,
+                    // width: 250,
                     child: Image.asset("assets/bg.png")),
               ),
 
@@ -97,14 +135,150 @@ class _MyWidgetDemoState extends State<MyWidgetDemo> {
               //     child: const Text("Submit")),
               OutlinedButton(
                   onPressed: () {
-                    print("Button is pressed");
+                    Navigator.pushNamed(context, '/welcome');
                   },
-                  child: const Text("Submit")),
+                  child: Text("Submit")),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account?"),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
+                        child: Text("Register"))
+                  ],
+                ),
+              )
               // IconButton(
               //     onPressed: () {
               //       print("Clicked");
               //     },
               //     icon: const Icon(Icons.thumb_up)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text("REGISTER"),
+      //   backgroundColor: const Color.fromRGBO(255, 114, 94, 1),
+      //   centerTitle: true,
+      // ),
+      body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.white12,
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    IconButton.filled(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                        icon: const Icon(Icons.home)),
+                    Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: SizedBox(
+                          height: 200,
+                          // width: 250,
+                          child: Image.asset("assets/bg.png")),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 15),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Username"),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 15),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Email",
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Password",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
+                        child: const Text("Register"),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Already have an account?"),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/login');
+                      },
+                      child: const Text("Login"))
+                ],
+              )
+            ],
+          ))),
+    );
+  }
+}
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.orangeAccent,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(
+                "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
+                height: 300,
+                width: 200,
+              ),
+              const Text(
+                "Welcome to Flutter",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              )
             ],
           ),
         ),
